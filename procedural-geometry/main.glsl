@@ -52,6 +52,8 @@ void main() {
     vec3 right = cross(forward, vec3(0., 1., 0.));
     vec3 up = cross(right, forward);
     vec3 raystart = cameraPos + right * uv.x + up * uv.y;
+    float fov = 3.14159 / 4.;
+    vec2 camspacePos = (uv - vec2(0.5, 0.5)) * 2;
     float d = depthTrace(raystart, forward);
     if(d >= 0.) {
         gl_FragColor = mix(
